@@ -1011,8 +1011,8 @@ function! s:DB_getDefault(name)
     elseif a:name ==# "SQLITE_cmd_header"       |return (exists("g:dbext_default_SQLITE_cmd_header")?g:dbext_default_SQLITE_cmd_header.'':".mode column\n.headers ON\n")
     elseif a:name ==# "SQLITE_cmd_options"      |return (exists("g:dbext_default_SQLITE_cmd_options")?g:dbext_default_SQLITE_cmd_options.'':'')
     elseif a:name ==# "SQLITE_cmd_terminator"   |return (exists("g:dbext_default_SQLITE_cmd_terminator")?g:dbext_default_SQLITE_cmd_terminator.'':';')
-    elseif a:name ==# "SQLSRV_bin"              |return (exists("g:dbext_default_SQLSRV_bin")?g:dbext_default_SQLSRV_bin.'':'osql')
-    elseif a:name ==# "SQLSRV_cmd_options"      |return (exists("g:dbext_default_SQLSRV_cmd_options")?g:dbext_default_SQLSRV_cmd_options.'':'-w 10000 -r -b -n')
+    elseif a:name ==# "SQLSRV_bin"              |return (exists("g:dbext_default_SQLSRV_bin")?g:dbext_default_SQLSRV_bin.'':'utfsql')
+    elseif a:name ==# "SQLSRV_cmd_options"      |return (exists("g:dbext_default_SQLSRV_cmd_options")?g:dbext_default_SQLSRV_cmd_options.'':'-w 65535 -r -b -n')
     elseif a:name ==# "SQLSRV_cmd_terminator"   |return (exists("g:dbext_default_SQLSRV_cmd_terminator")?g:dbext_default_SQLSRV_cmd_terminator.'':"\ngo\n")
     elseif a:name ==# "SQLSRV_SQL_Top_pat"      |return (exists("g:dbext_default_SQLSRV_SQL_Top_pat")?g:dbext_default_SQLSRV_SQL_Top_pat.'':'\(\cselect\)')
     elseif a:name ==# "SQLSRV_SQL_Top_sub"      |return (exists("g:dbext_default_SQLSRV_SQL_Top_sub")?g:dbext_default_SQLSRV_SQL_Top_sub.'':'\1 TOP @dbext_topX ')
@@ -7804,7 +7804,7 @@ function! s:DB_addToResultBuffer(output, do_clear)
     " Create a buffer mapping to close this window
     nnoremap <buffer> q                :DBResultsClose<cr>
     nnoremap <buffer> <silent> a       :call <SID>DB_set('autoclose', (s:DB_get('autoclose')==1?0:1))<CR>
-    nnoremap <buffer> <silent> <space> :DBResultsToggleResize<cr>
+"    nnoremap <buffer> <silent> <space> :DBToggleResultsResize<cr>
     if hasmapto('DB_historyDel')
         try
             silent! unmap <buffer> dd
@@ -9805,7 +9805,7 @@ function! dbext#DB_historyList()
     nnoremap <buffer> <silent> a             :call <SID>DB_set('autoclose', (s:DB_get('autoclose')==1?0:1))<CR>
     " Create a buffer mapping to close this window
     nnoremap <buffer> q                      :DBResultsClose<cr>
-    nnoremap <buffer> <silent> <space>       :DBResultsToggleResize<cr>
+"    nnoremap <buffer> <silent> <space> :DBToggleResultsResize<cr>
 
     if hasmapto('DB_removeVariable')
         try
