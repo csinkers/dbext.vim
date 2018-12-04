@@ -7696,8 +7696,8 @@ function! dbext#DB_windowOpen()
     if s:DB_switchToBuffer(res_buf_name, res_buf_name, 'result_bufnr') == 1
         nnoremap <buffer> <silent> R   :DBResultsRefresh<cr>
         nnoremap <buffer> <silent> O   :DBOrientationToggle<cr>
-        nnoremap <buffer> <silent> dd  :call dbext#DB_removeVariable()<CR>
-        xnoremap <buffer> <silent> d   :call dbext#DB_removeVariable()<CR>
+        " nnoremap <buffer> <silent> dd  :call dbext#DB_removeVariable()<CR>
+        " xnoremap <buffer> <silent> d   :call dbext#DB_removeVariable()<CR>
         " nnoremap <buffer> <silent> dd  :call s:DB_removeVariable()<CR>
         " xnoremap <buffer> <silent> d   :call s:DB_removeVariable()<CR>
         " nnoremap <buffer> <silent> dd  :DBVarRangeAssign!<CR>
@@ -7792,8 +7792,8 @@ function! s:DB_addToResultBuffer(output, do_clear)
         let res_bufnr      = bufnr('%')
         nnoremap <buffer> <silent> R   :DBResultsRefresh<cr>
         nnoremap <buffer> <silent> O   :DBOrientationToggle<cr>
-        nnoremap <buffer> <silent> dd  :call dbext#DB_removeVariable()<CR>
-        xnoremap <buffer> <silent> d   :call dbext#DB_removeVariable()<CR>
+        " nnoremap <buffer> <silent> dd  :call dbext#DB_removeVariable()<CR>
+        " xnoremap <buffer> <silent> d   :call dbext#DB_removeVariable()<CR>
         " nnoremap <buffer> <silent> dd  :call s:DB_removeVariable()<CR>
         " xnoremap <buffer> <silent> d   :call s:DB_removeVariable()<CR>
         " nnoremap <buffer> <silent> dd  :DBVarRangeAssign!<CR>
